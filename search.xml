@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>test
+hexo new test</title>
+    <url>/2019/11/24/testhexo-new-test/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2019/11/24/test/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>JavaSE-4-集合</title>
+    <url>/2019/11/08/JavaSE-4-%E9%9B%86%E5%90%88/</url>
+    <content><![CDATA[<p>一、List</p>
+<p>三种实现类：ArrayList、LinkList、Vector</p>
+<p>插入的顺序就是元素的顺序，有索引、可重复</p>
+<p>默认长度为10</p>
+<p>1、ArrryList</p>
+<p>底层实现方式为Array，线程不安全但高效</p>
+<p>2、LinkList</p>
+<p>底层实现方式为链表，增删效率改</p>
+<p>3、Vector</p>
+<p>键值对，线程安全但低效</p>
+<p>note：扩容</p>
+<p>步骤：先扩容，再拷贝，最后覆盖，即赋的是新数组</p>
+<p>扩容方式：newlength = old+1/2*old</p>
+<p>二、Set</p>
+<p>HashSet、HashLinkSet、TreeSet,其中TreeSet通过conpare和compareTo进行排序</p>
+]]></content>
+      <categories>
+        <category>JavaSE</category>
+      </categories>
+      <tags>
+        <tag>-List -容器 -源代码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaSE-3-封装、继承与多态</title>
+    <url>/2019/11/08/JavaSE-3-%E5%B0%81%E8%A3%85%E3%80%81%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81/</url>
+    <content><![CDATA[<h3 id="一、封装"><a href="#一、封装" class="headerlink" title="一、封装"></a>一、封装</h3><p>1、目的</p>
+<p>实现高内聚、低耦合</p>
+<p>2、四个关键字</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>类</th>
+<th>包</th>
+<th>子类</th>
+<th>项目</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>default</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>public</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>*：1表示可访问，default为默认修饰词</p>
+<p>项目类里的属性一般设为private，并提供get方法和set方法</p>
+<h3 id="二、继承"><a href="#二、继承" class="headerlink" title="二、继承"></a>二、继承</h3><p>1、类只有一个直接父类（单继承）</p>
+<p>（接口可以多继承）</p>
+<p>2、用instanceof判断是否是某类的对象</p>
+<p>3、当父类的方法不适用于子类时子类可以重写父类方法</p>
+<p>4、super</p>
+<p>直接父类的引用，在构造方法的第一句都会默认有super();</p>
+<p>5、关于重写与重载</p>
+<p>重写：子类对父类方法的重新编写，返回值和形参都不变。</p>
+<p>重载：在一个类里面只有方法名相同。</p>
+<h3 id="三、多态"><a href="#三、多态" class="headerlink" title="三、多态"></a>三、多态</h3><p>1、定义：允许不同类的对象对同一消息做出相应。字面上说就是同一消息可以根据对象的不同而调用不同的方法。</p>
+<p>2、存在条件：继承、重写和父类引用指向子类对象。</p>
+<p>3、简单来说就是父类引用对象调用了子类对于父类的重写方法。但是因为向上转型，所以丢失了子类的方法和属性，只能调用重写的方法，对于重载的方法和其他属性不能调用。</p>
+<h5 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPolymorphic</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        person s = <span class="keyword">new</span> student();</span><br><span class="line">        s.showrole();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">person</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showrole</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我是人"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">student</span> <span class="keyword">extends</span> <span class="title">person</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sid = <span class="number">111111</span>;</span><br><span class="line">    String sname;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showrole</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"我是学生"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"此为子类特有方法"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：我是学生</p>
+<p>且不能调用show方法，因为它为子类特有方法。</p>
+<p>四、实例</p>
+<p>摘自 <a href="http://blog.csdn.net/thinkGhoster/archive/2008/04/19/2307001.aspx" target="_blank" rel="noopener">http://blog.csdn.net/thinkGhoster/archive/2008/04/19/2307001.aspx</a> </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(D obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"A and D"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(A obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"A and A"</span>);</span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(B obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"B and B"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(A obj)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="string">"B and A"</span>);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        A a1 = <span class="keyword">new</span> A();</span><br><span class="line">        A a2 = <span class="keyword">new</span> B();</span><br><span class="line">        B b = <span class="keyword">new</span> B();</span><br><span class="line">        C c = <span class="keyword">new</span> C();</span><br><span class="line">        D d = <span class="keyword">new</span> D();</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">"1--"</span> + a1.show(b));</span><br><span class="line">        System.out.println(<span class="string">"2--"</span> + a1.show(c));</span><br><span class="line">        System.out.println(<span class="string">"3--"</span> + a1.show(d));</span><br><span class="line">        System.out.println(<span class="string">"4--"</span> + a2.show(b));</span><br><span class="line">        System.out.println(<span class="string">"5--"</span> + a2.show(c));</span><br><span class="line">        System.out.println(<span class="string">"6--"</span> + a2.show(d));</span><br><span class="line">        System.out.println(<span class="string">"7--"</span> + b.show(b));</span><br><span class="line">        System.out.println(<span class="string">"8--"</span> + b.show(c));</span><br><span class="line">        System.out.println(<span class="string">"9--"</span> + b.show(d));      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1--A and A</span><br><span class="line">2--A and A</span><br><span class="line">3--A and D</span><br><span class="line">4--B and A</span><br><span class="line">5--B and A</span><br><span class="line">6--A and D</span><br><span class="line">7--B and B</span><br><span class="line">8--B and B</span><br><span class="line">9--A and D</span><br></pre></td></tr></table></figure>
+
+<p>解析：</p>
+<p> <strong><em>当超类对象引用变量引用子类对象时，被引用对象的类型而不是引用变量的类型决定了调用谁的成员方法，但是这个被调用的方法必须是在超类中定义过的，也就是说被子类覆盖的方法。\</em></strong> （但是如果强制把超类转换成子类的话，就可以调用子类中新添加而超类没有的方法了。） </p>
+]]></content>
+      <categories>
+        <category>JavaSE</category>
+      </categories>
+      <tags>
+        <tag>-类的特征 -类相关</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaSE-2.装箱拆箱</title>
+    <url>/2019/11/08/JavaSE-2-%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/</url>
+    <content><![CDATA[<h3 id="装箱拆箱"><a href="#装箱拆箱" class="headerlink" title="装箱拆箱"></a>装箱拆箱</h3><h4 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h4><h5 id="前定义–Java中的基本类型和包装类型"><a href="#前定义–Java中的基本类型和包装类型" class="headerlink" title="前定义–Java中的基本类型和包装类型"></a>前定义–Java中的基本类型和包装类型</h5><p>两者对应关系如下图</p>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>包装器类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody></table>
+<p>为何要引入包装器类型呢？</p>
+<p>总所周知，java都是类与对象，当我们new一个对象时，此对象就存储在堆里，当我们需要时再通过堆栈中的引用来使用这些对象（类似于指针）。  </p>
+<p>但是，一些我们常用的数据类型不可能次次都new在堆里，这样太浪费空间了，比较低效。不如直接存在堆里。</p>
+<p>那为何还要有包装器类型呢，直接使用基本类型不好吗？</p>
+<p>这是因为包装器类型是将基本类型包装起来的类，具有基本类型不具备的类的属性和方法，这样一来就丰富了基本类型的操作。</p>
+<p>（参考： <a href="https://www.cnblogs.com/huajiezh/p/5225637.html" target="_blank" rel="noopener">https://www.cnblogs.com/huajiezh/p/5225637.html</a> ）</p>
+<h4 id="而拆箱装箱就是这两个类型的转换。"><a href="#而拆箱装箱就是这两个类型的转换。" class="headerlink" title="而拆箱装箱就是这两个类型的转换。"></a>而拆箱装箱就是这两个类型的转换。</h4><p>即装箱为自动将基本数据类型转换为包装器类型，拆箱反之。</p>
+<h3 id="二、实现原理"><a href="#二、实现原理" class="headerlink" title="二、实现原理"></a>二、实现原理</h3><p>装箱通过调用包装器类型的valueOf方法实现，拆箱通过调用包装器类型的xxxValue方法实现（xxx为基本数据类型）。</p>
+<h3 id="三、面试或者笔试相关"><a href="#三、面试或者笔试相关" class="headerlink" title="三、面试或者笔试相关"></a>三、面试或者笔试相关</h3><p>装箱拆箱问题主要出现在比较（==）返回值上。</p>
+<p>例1、</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         </span><br><span class="line">        Integer i1 = <span class="number">100</span>;</span><br><span class="line">        Integer i2 = <span class="number">100</span>;</span><br><span class="line">        Integer i3 = <span class="number">200</span>;</span><br><span class="line">        Integer i4 = <span class="number">200</span>;</span><br><span class="line">         </span><br><span class="line">        System.out.println(i1==i2);</span><br><span class="line">        System.out.println(i3==i4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出为：true</p>
+<p>​                false</p>
+<p>因为Integer i1 = 100；等四句涉及到了自动装箱，则使用了Integer的valueOf方法实现。故比较时看其所指对象是否一致即可。</p>
+<p>查看valueOf的源代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">       <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">   <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再看IntegerCache类：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerCache</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> low = -<span class="number">128</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> high;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// high value may be configured by property</span></span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">127</span>;</span><br><span class="line">        String integerCacheHighPropValue =</span><br><span class="line">                sun.misc.VM.getSavedProperty(<span class="string">"java.lang.Integer.IntegerCache.high"</span>);</span><br><span class="line">        <span class="keyword">if</span> (integerCacheHighPropValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> i = parseInt(integerCacheHighPropValue);</span><br><span class="line">                i = Math.max(i, <span class="number">127</span>);</span><br><span class="line">                <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span>( NumberFormatException nfe) &#123;</span><br><span class="line">                <span class="comment">// If the property cannot be parsed into an int, ignore it.</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        high = h;</span><br><span class="line"></span><br><span class="line">        cache = <span class="keyword">new</span> Integer[(high - low) + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> j = low;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">            cache[k] = <span class="keyword">new</span> Integer(j++);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">        <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">IntegerCache</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 在通过valueOf方法创建Integer对象的时候，如果数值在[-128,127]之间，便返回指向IntegerCache.cache中已经存在的对象的引用；否则创建一个新的Integer对象。 </p>
+<p>例2、</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         </span><br><span class="line">        Double i1 = <span class="number">100.0</span>;</span><br><span class="line">        Double i2 = <span class="number">100.0</span>;</span><br><span class="line">        Double i3 = <span class="number">200.0</span>;</span><br><span class="line">        Double i4 = <span class="number">200.0</span>;</span><br><span class="line">         </span><br><span class="line">        System.out.println(i1==i2);</span><br><span class="line">        System.out.println(i3==i4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>输出</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">false</span></span><br><span class="line"><span class="keyword">false</span></span><br></pre></td></tr></table></figure>
+
+<p>查看double的valueOf源代码发现都是创建新对象，故不一致。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Double <span class="title">valueOf</span><span class="params">(<span class="keyword">double</span> d)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Double(d);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例3、</p>
+<p>关于Boolean的valueOf实现：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">valueOf</span><span class="params">(<span class="keyword">boolean</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (b ? TRUE : FALSE);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Boolean TRUE = <span class="keyword">new</span> Boolean(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/** </span></span><br><span class="line"><span class="comment">    * The &lt;code&gt;Boolean&lt;/code&gt; object corresponding to the primitive </span></span><br><span class="line"><span class="comment">    * value &lt;code&gt;false&lt;/code&gt;. </span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Boolean FALSE = <span class="keyword">new</span> Boolean(<span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+
+<p>因为TRUE和FALSE都是静态变量，仅初始化一次且不变。</p>
+<p>例4、</p>
+<p>谈谈Integer i = new Integer(xxx)和Integer i =xxx;这两种方式的区别。</p>
+<p>　　当然，这个题目属于比较宽泛类型的。但是要点一定要答上，我总结一下主要有以下这两点区别：</p>
+<p>　　1）第一种方式不会触发自动装箱的过程；而第二种方式会触发；</p>
+<p>　　2）在执行效率和资源占用上的区别。第二种方式的执行效率和资源占用在一般性情况下要优于第一种情况</p>
+<p>（参考： <a href="https://www.cnblogs.com/dolphin0520/p/3780005.html" target="_blank" rel="noopener">https://www.cnblogs.com/dolphin0520/p/3780005.html</a> ）</p>
+]]></content>
+      <categories>
+        <category>JavaSE</category>
+      </categories>
+      <tags>
+        <tag>Java基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaSE-1.static</title>
+    <url>/2019/11/07/JavaSE-1-static/</url>
+    <content><![CDATA[<h2 id="一、static方法"><a href="#一、static方法" class="headerlink" title="一、static方法"></a>一、static方法</h2><p>​    在静态方法中不能访问类的非静态成员变量和非静态成员方法（反之可以）。因为非静态的成员变量和非静态的成员方法是依赖于具体的对象的，而静态方法不依赖于任何对象。</p>
+<h5 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teststatic</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">noshow</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//这里不能调用noshow()</span></span><br><span class="line">        <span class="comment">//noshou()  --&gt;这是错的</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、static变量"><a href="#二、static变量" class="headerlink" title="二、static变量"></a>二、static变量</h2><p>静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。</p>
+<p>（非静态变量时对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。）</p>
+<h2 id="三、static代码块"><a href="#三、static代码块" class="headerlink" title="三、static代码块"></a>三、static代码块</h2><p>用于初始化类中的静态变量，在类加载过程中的初始化阶段执行，且只执行一次。  </p>
+<h5 id="代码示例-1"><a href="#代码示例-1" class="headerlink" title="代码示例"></a>代码示例</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teststatic2</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> a = <span class="number">886</span>;</span><br><span class="line">    <span class="keyword">static</span> String str;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        str = <span class="string">"hey, boy!"</span>;</span><br><span class="line">        a = <span class="number">666</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        System.out.println(Teststatic2.str);</span><br><span class="line">        System.out.println(Teststatic2.a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出：hey, boy!</p>
+<p>​            666</p>
+<p>但是如果将static代码块和static变量位置交换那么将输出：</p>
+<p>​            hey, boy!</p>
+<p>​            886</p>
+<p>这说明即使是static代码块也要按照顺序初始静态变量，且只初始化一次。</p>
+<p>扩展：类的加载</p>
+<h3 id="四、相关笔试题解析"><a href="#四、相关笔试题解析" class="headerlink" title="四、相关笔试题解析"></a>四、相关笔试题解析</h3><p>1、</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">extends</span> <span class="title">Base</span></span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test static"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test constructor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> Test();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span></span>&#123;</span><br><span class="line">     </span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"base static"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Base</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"base constructor"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出什么？</p>
+<p>考点：类的加载过程与顺序，static关键字。</p>
+<p>Test继承自Base类，而执行main方法前要先加载类（没有加载类如何构造呢？），而后因new Test() 再构造Test类。当加载Test类要先加载Base类（有父才有子），再构造Test类，也是先调用Base类的构造函数，再调用Test类中的。</p>
+<p>2、</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    Person person = <span class="keyword">new</span> Person(<span class="string">"Test"</span>);<span class="comment">//5、初始化父类成员对象</span></span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test static"</span>);</span><br><span class="line">    &#125;<span class="comment">//1、先加载Test类，输出“test static”</span></span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test constructor"</span>);</span><br><span class="line">    &#125;<span class="comment">//8、构造器初始化对象，输出“test constructor”</span></span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">new</span> MyClass();<span class="comment">//2、通过main方法进入，此时new Myclass()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"person static"</span>);</span><br><span class="line">    &#125;<span class="comment">//6、加载Person类，输出“person static”</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"person "</span>+str);</span><br><span class="line">    &#125;<span class="comment">//7、通过传入参数”Test“构造person对象，输出”person Test“</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> <span class="keyword">extends</span> <span class="title">Test</span> </span>&#123;<span class="comment">//3、找到Myclass发现它继承于Test，但Test已经加载，故直接加载Myclass</span></span><br><span class="line">    Person person = <span class="keyword">new</span> Person(<span class="string">"MyClass"</span>);<span class="comment">//9、初始化成员变量，输出“person MysClass”</span></span><br><span class="line">    <span class="keyword">static</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"myclass static"</span>);</span><br><span class="line">    &#125;<span class="comment">//4、加载Myclass类，执行static块，输出“myclass static”。加载完毕，开始调用构造器构造对象，</span></span><br><span class="line">    <span class="comment">//因继承于Test，故先初始化父类的成员对象</span></span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyClass</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"myclass constructor"</span>);</span><br><span class="line">    &#125;<span class="comment">//10、调用构造器，输出“my class constructor”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>考点：同上</p>
+<p>此题同上一题的不同之处在于父类中加入了成员变量，且此成员变量为其他类的对象。</p>
+<p>同样遵守：先加载，后构造，再初始化的原则。</p>
+<p>故代码执行顺序写于注释之中。</p>
+]]></content>
+      <categories>
+        <category>JavaSE</category>
+      </categories>
+      <tags>
+        <tag>-JavaSE -java基础 -类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我为什么要写博客</title>
+    <url>/2019/11/07/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="之前"><a href="#之前" class="headerlink" title="之前"></a>之前</h2><p>刚来学校的时候因为学习新语言的关系查找了很多资料，也免不难浏览了很多博客。知道那些博客都是博主自己搭的之后感觉特别震惊，觉得自己永远也学不会搭建属于自己的博客。  </p>
+<p>大二那年因为学习php，了解到前端后台，于是自己买了服务器和域名，准备搭建一个自己的网站。我甚至为域名做好了备案，可是后面不会域名解析，不会使用linux，再加上各种各样的事情，于是直到服务器过期我也没搭建好属于自己的网站。这算是一个比较遗憾的事情。  </p>
+<h2 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h2><p>现在我大四，正在一家公司实习，感觉自己没有什么能力。听学长说写博客能提升自己的思维能力与归纳总结能力，于是查阅了相关资料，并成功地搭建了hexo博客。还挺开心的，一方面是因为自己终于搭建好一个属于自己的网站（虽然比较简单），另一方面是感觉自己能做到这些东西，某种方面上说让自己有了一些信心。  </p>
+<h2 id="博文内容"><a href="#博文内容" class="headerlink" title="博文内容"></a>博文内容</h2><p>目前呢，这个博客主要是用来写java学习上遇到的一些问题。虽然我有在onenote上有记笔记的习惯，但是还是比较乱，想着用博客来整理规范。大致包括一下几个内容：</p>
+<ol>
+<li>自己的一些心情感悟</li>
+<li>Java学习</li>
+<li>（待添加）</li>
+</ol>
+]]></content>
+      <categories>
+        <category>杂七杂八</category>
+      </categories>
+      <tags>
+        <tag>杂</tag>
+      </tags>
+  </entry>
+</search>
